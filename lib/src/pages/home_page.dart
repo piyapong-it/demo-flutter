@@ -22,9 +22,22 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(child: MyBox(title: "Box1",)),
-            Expanded(child: MyBox(title: "Box2",)),
-            Expanded(child: MyBox(title: "Box3",)),
+            Expanded(
+                child: MyBox(
+              title: "Box1",
+              backgruondColor: Colors.red,
+              color: Colors.white,
+            )),
+            Expanded(
+                child: MyBox(
+              title: "Box2",
+              backgruondColor: Colors.yellow,
+            )),
+            Expanded(
+                child: MyBox(
+              title: "Box3",
+              backgruondColor: Colors.blue,
+            )),
           ],
         ),
       ),
@@ -33,11 +46,27 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MyBox extends StatelessWidget {
-  String title = "";
-   MyBox({super.key, required this.title});
+  String title;
+  Color backgruondColor;
+  Color? color;
+  MyBox(
+      {super.key,
+      required this.title,
+      required this.backgruondColor,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.red, child: Text(title));
+    return Container(
+        alignment: Alignment.center,
+        color: backgruondColor,
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w500,
+            color: color,
+          ),
+        ));
   }
 }
